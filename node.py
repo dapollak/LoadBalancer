@@ -7,6 +7,7 @@ class Node:
         self.name = name
         self.accepted_types = accepted_types
         self.tasks_queue = Queue()
+        self.active = False
 
     def does_task_supported(self, task:Task):
         return task.type in self.accepted_types

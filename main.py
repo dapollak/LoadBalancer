@@ -1,4 +1,4 @@
-from LoadBalancer import RRLoadBalancer
+from LoadBalancer import RRLoadBalancer, LeastTaskLoadBalancer
 from input_parsers import parse_nodes_config
 from Feeder import FileFeeder
 from taskdispatcher import TaskDispathcer
@@ -8,7 +8,7 @@ def main():
     nodes_list = list(parse_nodes_config(r'tests\files\nodes1.config'))
     feeder = FileFeeder(r"tests\files\tasks1.config")
 
-    loadbalancer = RRLoadBalancer(nodes_list)
+    loadbalancer = LeastTaskLoadBalancer(nodes_list)
     dispatcher = TaskDispathcer(feeder, loadbalancer)
 
     workers_list = []

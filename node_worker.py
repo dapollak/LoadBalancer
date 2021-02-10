@@ -23,11 +23,13 @@ class NodeGenericWorker(Thread):
                 start_time = self.last_task_start + self.last_task_duration
             else:
                 start_time = task_to_process.start
+            self.node.active = True
             yield task_to_process, start_time
         except Empty:
             yield None, None
         finally:
             if task_to_process is not None:
+                self.node.active = False
                 self.last_task_start = task_to_process.start
                 self.last_task_duration = task_to_process.duration
                 self.node.tasks_queue.task_done()

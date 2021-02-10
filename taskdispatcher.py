@@ -9,6 +9,8 @@ class TaskDispathcer:
 
     def dispatch_tasks(self):
         tasks = self.feeder.tasks()
+        last_start = 0
         for task in tasks:
-            sleep(task.start)
+            sleep(task.start-last_start)
             self.loadbalancer.dispatch_task(task)
+            last_start = task.start

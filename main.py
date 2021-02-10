@@ -18,7 +18,7 @@ def main():
         worker.start()
 
     dispatcher.dispatch_tasks()
-    
+
     for worker in workers_list:
         worker.join()
 

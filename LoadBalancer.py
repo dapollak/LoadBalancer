@@ -3,16 +3,19 @@ from consts import TaskType
 from types import SimpleNamespace
 
 class LoadBalancer:
-    def __init__(self, tasks_feeder:Feeder, nodes_list):
-        self.tasks_feeder = tasks_feeder
+    def __init__(self, nodes_list):
         self.nodes_list = nodes_list
 
-    def assign_task_to_node(self, task):
+    def match_task_to_node(self, task):
         raise NotImplementedError()
 
+    def dispatch_task(self, task):
+        node = self.match_task_to_node(task)
+        node.queue_task(task)
+
 class RRLoadBalancer(LoadBalancer):
-    def __init__(self, tasks_feeder:Feeder, nodes_list):
-        super().__init__(tasks_feeder, nodes_list)
+    def __init__(self, nodes_list):
+        super().__init__(nodes_list)
         
         self.nodes_by_type = {}
         for tasktype in TaskType:

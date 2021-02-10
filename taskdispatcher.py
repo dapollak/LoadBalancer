@@ -1,11 +1,14 @@
 from time import sleep
+from Feeder import Feeder
+from LoadBalancer import LoadBalancer
 
 class TaskDispathcer:
-    def __init__(self, feeder:Feeder, loadbalancer:LoadBalander):
+    def __init__(self, feeder:Feeder, loadbalancer:LoadBalancer):
         self.feeder = feeder
         self.loadbalancer = loadbalancer
 
     def dispatch_tasks(self):
-        for task in feeder.next_task():
+        tasks = self.feeder.tasks()
+        for task in tasks:
             sleep(task.start)
-            loadbalancer.dispatch_task(task)
+            self.loadbalancer.dispatch_task(task)

@@ -3,7 +3,7 @@ from consts import TaskType
 from types import SimpleNamespace
 
 class LoadBalancer:
-    def __init__(self, nodes_list):
+    def __init__(self, nodes_list:list):
         self.nodes_list = nodes_list
 
     def match_task_to_node(self, task):
@@ -14,7 +14,7 @@ class LoadBalancer:
         node.queue_task(task)
 
 class RRLoadBalancer(LoadBalancer):
-    def __init__(self, nodes_list):
+    def __init__(self, nodes_list:list):
         super().__init__(nodes_list)
         
         self.nodes_by_type = {}

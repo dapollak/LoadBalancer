@@ -3,22 +3,19 @@ from task import Task
 from consts import TaskType
 
 class Feeder:
-    def next_task(self):
-        raise NotImplementedError
+    def __init__(self):
+        self.task_iter = []
+
+    def tasks(self):
+        for task in self.task_iter:
+            yield task
 
 class ListFeeder(Feeder): # without timing
     def __init__(self, tasks_list):
-        self.tasks_list = tasks_list
         super().__init__()
-
-    def next_task(self):
-        for task in tasks_list:
-            yield task
+        self.task_iter = tasks_list
 
 class FileFeeder(Feeder): # without timing
     def __init__(self, tasks_config_filepath):
         super().__init__()
-        self.tasks_iter = parse_tasks_config(tasks_config_filepath)
-
-    def next_task(self):
-        yield self.tasks_iter.next()
+        self.task_iter = parse_tasks_config(tasks_config_filepath)

@@ -20,4 +20,4 @@ jobs:
           python -c "import sys; print(sys.version)"
       - name: Python Unit Test
         run: |
-          python -m unittest discover -p "test_*.py" -s tests
+          python -m unittest discover -p "test_*.py" -s tests -v

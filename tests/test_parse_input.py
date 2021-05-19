@@ -7,9 +7,9 @@ from task import Task
 from consts import TaskType
 
 class TestParseInputs(unittest.TestCase):
-    nodes1_file = r'tests\files\nodes1.config'
-    tasks1_file = r'tests\files\tasks1.config'
-    tasks_huge_file = r'tests\files\tasks_huge.config'
+    nodes1_file = r'tests/files/nodes1.config'
+    tasks1_file = r'tests/files/tasks1.config'
+    tasks_huge_file = r'tests/files/tasks_huge.config'
 
     def test_parse_nodes1(self):
         nodes_iter = input_parsers.parse_nodes_config(self.nodes1_file)
@@ -24,6 +24,7 @@ class TestParseInputs(unittest.TestCase):
         self.assertEqual(counter, 4)
 
     def test_parse_tasks1(self):
+        print(os.path.abspath(os.path.curdir))
         tasks_iter = input_parsers.parse_tasks_config(self.tasks1_file)
         counter = 0
         for i, task in enumerate(tasks_iter):

@@ -30,6 +30,6 @@ jobs:
         # uses: xoviat/actions-pytest@6e27d0810b47a907cc45bc96092599f072b28870
         uses: xoviat/actions-pytest@0.1-alpha2
         with:
-        # Arguments for the pytest command
-        args: # optional
+          # Arguments for the pytest command
+          args: # optional
  

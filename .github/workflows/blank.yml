@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.x
+      - name: Set up Python 3.8.5
         uses: actions/setup-python@v2
         with:
           # Semantic version range syntax or exact version of a Python version
@@ -16,7 +16,7 @@ jobs:
       - name: Display Python version
         run: |
           python -c "import sys; print(sys.version)"
-          pwd
+          ls -al
       - name: Test with pytest
         run: |
           pip install pytest

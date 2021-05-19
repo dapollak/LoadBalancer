@@ -19,9 +19,5 @@ jobs:
         run: |
           python -c "import sys; print(sys.version)"
       - name: Python Unit Test
-        # You may pin to the exact commit or the version.
-        # uses: onichandame/python-test-action@6a1d618300de7ea0b753e50819e093a7e5a5f60b
-        uses: onichandame/python-test-action@0.0.0
-        with:
-          test_dir: tests
-          pattern: test_*.py
+        run: |
+          python -m unittest discover -p "test_*.py" -s tests
